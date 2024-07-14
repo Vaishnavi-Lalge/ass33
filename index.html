@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quantity Counter</title>
+    <style>
+        body{
+            background-color: rgb(199, 178, 154);
+        }
+    .product-card{
+        width: 300px;
+        border: 1px solid black;
+        margin:10px auto;
+        border-radius: 10px;
+        background-color: rgb(230, 243, 159);
+    }
+    .img-bulb{
+        height: 200px;
+        display: block;
+        margin: 10px auto;
+    }
+    .btn-buy-now{
+        display: block;
+        margin: 10px auto;
+        font-size: 20px;
+        padding: 5px 20px;
+        border-radius: 15px;
+        border: 1px solid black;
+        cursor: pointer;
+
+    }
+     .btn-quantity{
+        height: 50px;
+        margin-top: 30px;
+
+    }
+    .quantity-btn-container{
+        display:flex ;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .quantity-text{
+        font-size:40px;
+
+
+    }
+    </style>
+   
+</head>
+<body>
+    <div class="product-card">
+        <img src="./bag.png" class="img-bulb"/>
+
+<div class="quantity-btn-container"> 
+    <img src="sign.png" class="btn-quantity" onclick="handleQuantityChange('dec')"/>
+
+    <span class="quantity-text" id="quantity-text">
+        1
+    </span>
+
+    <img src="add.png" class="btn-quantity" onclick="handleQuantityChange('inc')"/>
+</div>
+        <button class="btn-buy-now">Buy Now</button>
+    </div>
+    <script>
+        function handleQuantityChange(action){
+            const quantityElement = document.getElementById("quantity-text")
+
+            let  quatity = parseInt(quantityElement.innerText);
+
+            if(quatity ==1 && action=='dec'){
+               alert('Quantity cannot be less than 1')
+               return
+            }
+            else if (quatity==4 && action=='inc'){
+                alert('Quantity cannot be greater than 4')
+                return
+            }
+            quantityElement.innerText = action=='inc' ? ++quatity : --quatity
+        }
+       
+    </script>
+</body>
+</html>
